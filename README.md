@@ -1,1 +1,1 @@
-![Leetcode Stats](https://leetcode.card.workers.dev/?username=koder_786)
+![Leetcode Stats](https://leetcode.card.workers.dev/?username=koder_786&theme=auto)
