@@ -5,13 +5,9 @@ class Solution:
         # code here
         arr.sort()
         ans=arr[-1]-arr[0]
-        s=arr[0]+k
-        l=arr[-1]-k
         for i in range(n-1):
-            s1=min(s,arr[i+1]-k)
-            l1=max(l,arr[i]+k)
-            if(s1>=0):
-                ans=min(ans,l1-s1)
+            if(arr[i+1]>=k):
+                ans=min(ans,max(arr[i]+k,arr[-1]-k)-min(arr[i+1]-k,arr[0]+k))
         return ans
 #{ 
 #  Driver Code Starts
