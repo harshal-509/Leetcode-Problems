@@ -3,7 +3,26 @@
 class Solution:
     def commonElements (self,A, B, C, n1, n2, n3):
         # your code here
-        return sorted(list(set.intersection(set.intersection(set(A),set(B)),set(C))))
+        i=0
+        j=0
+        k=0
+        ans=[]
+        while(i<n1 and j<n2 and k<n3):
+            if(A[i]==B[j] and B[j]==C[k]):
+                if(ans and ans[-1]==A[i]):
+                    pass
+                else:
+                    ans.append(A[i])
+                i+=1
+                j+=1
+                k+=1
+            elif(A[i]<B[j]):
+                i+=1
+            elif(B[j]<C[k]):
+                j+=1
+            else:
+                k+=1
+        return ans
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
