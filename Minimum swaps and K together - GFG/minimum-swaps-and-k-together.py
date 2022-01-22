@@ -7,8 +7,6 @@ def minSwap (arr, n, k) :
         if(arr[i]<=k):
             p+=1
     s=0
-    if(p==0):
-        return 0
     for i in range(p):
         if(arr[i]>k):
             s+=1
