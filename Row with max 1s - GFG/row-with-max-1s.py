@@ -5,12 +5,14 @@ class Solution:
 	def rowWithMax1s(self,arr, n, m):
 		# code here
 		ans=-1
-		o=0
+		o=m-1
+		j=m-1
         for i in range(n):
-            x=m-lb(arr[i],1)
-            if(x>o):
+            while(j>=0 and arr[i][j]==1):
+                j-=1
+            if(j<o):
+                o=j
                 ans=i
-                o=x
         return ans
 #{ 
 #  Driver Code Starts
