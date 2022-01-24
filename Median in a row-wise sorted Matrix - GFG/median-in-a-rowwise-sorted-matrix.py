@@ -1,34 +1,30 @@
 #User function Template for python3
 
-from bisect import bisect_right as upper_bound
+import bisect
 class Solution:
     def median(self, matrix, r, c):
     	#code here
-    	def binaryMedian(m, r, d):
-            mi = m[0][0]
-            mx = 0
+    	def hs(m):
+            ans=0
             for i in range(r):
-                if m[i][0] < mi:
-                    mi = m[i][0]
-                if m[i][d-1] > mx :
-                    mx =  m[i][d-1]
-             
-            desired = (r * d + 1) // 2
-             
-            while (mi < mx):
-                mid = mi + (mx - mi) // 2
-                place = [0];
-                 
-                # Find count of elements smaller than mid
-                for i in range(r):
-                     j = upper_bound(m[i], mid)
-                     place[0] = place[0] + j
-                if place[0] < desired:
-                    mi = mid + 1
-                else:
-                    mx = mid
-            return mi  
-        return binaryMedian(matrix,r,c)
+                ans+=bisect.bisect_right(matrix[i],m)
+            return ans
+        min_=matrix[0][0]
+        max_=0
+        for i in range(r):
+            min_=min(min_,matrix[i][0])
+            max_=max(max_,matrix[i][c-1])
+        i=min_
+        j=max_
+        while(i<j):
+            m=i+(j-i)//2
+            x=hs(m)
+            if(x<(r*c+1)//2):
+                i=m+1
+            else:
+                j=m
+        return i
+          
     	  
 #{ 
 #  Driver Code Starts
