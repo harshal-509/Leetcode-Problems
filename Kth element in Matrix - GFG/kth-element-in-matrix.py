@@ -1,13 +1,23 @@
 #User function Template for python3
-
+import bisect
 def kthSmallest(mat, n, k): 
     # Your code goes here
-    ans=[]
-    for i in range(n):
-        ans+=mat[i]
-    ans.sort()
-    return ans[k-1]
-
+    def hs(m):
+        s=0
+        for i in range(n):
+            s+=bisect.bisect_right(mat[i],m)
+        return s
+    ans=0
+    i=mat[0][0]
+    j=mat[n-1][n-1]
+    while(i<=j):
+        mid=i+(j-i)//2
+        if(hs(mid)<k):
+            i=mid+1
+        else:
+            ans=mid
+            j=mid-1
+    return ans
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
