@@ -4,7 +4,7 @@ import bisect
 class Solution:
     def median(self, matrix, r, c):
     	#code here
-    	def hs(m):
+        def hs(m):
             ans=0
             for i in range(r):
                 ans+=bisect.bisect_right(matrix[i],m)
@@ -16,14 +16,16 @@ class Solution:
             max_=max(max_,matrix[i][c-1])
         i=min_
         j=max_
-        while(i<j):
+        ans=-1
+        while(i<=j):
             m=i+(j-i)//2
             x=hs(m)
             if(x<(r*c+1)//2):
                 i=m+1
             else:
-                j=m
-        return i
+                ans=m
+                j=m-1
+        return ans
           
     	  
 #{ 
