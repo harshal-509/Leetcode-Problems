@@ -3,18 +3,17 @@ class Solution:
 	def AllPossibleStrings(self, s):
 		# Code here
 		n=len(s)
-	    def hs(s,i,temp,ans):
-	        if(i==n):
-	            if(len(temp)!=0):
-	                ans.append("".join(temp.copy()))
-	            return
-	        hs(s,i+1,temp,ans)
-	        temp.append(s[i])
-	        hs(s,i+1,temp,ans)
-	        temp.pop()
-	    temp=[]
+	    def hs(s,ans):
+	        x=pow(2,n)
+	        for i in range(x):
+	            temp=""
+	            for j in range(n):
+	                if(i&(1<<j)):
+	                    temp+=s[j]
+	            if(temp):
+	                ans.append(temp)
 	    ans=[]
-	    hs(s,0,temp,ans)
+	    hs(s,ans)
 	    ans.sort()
 	    return ans
 #{ 
