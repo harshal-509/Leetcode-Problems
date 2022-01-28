@@ -3,26 +3,27 @@ class Solution:
     # Function should return an integer
     def countPs(self,s):
         # Code here
-        def hs(i,j,dp):
-            if(dp[i][j]!=-1):
-                return dp[i][j]
-            if(i>j):
-                return 0
-            if(i==j):
-                dp[i][j]=1
-                return 1
-            if(s[i]==s[j]):
-                dp[i][j]=1+hs(i+1,j,dp)+hs(i,j-1,dp)
-                return dp[i][j]
-            dp[i][j]=hs(i+1,j,dp)+hs(i,j-1,dp)-hs(i+1,j-1,dp)
-            return dp[i][j]%mod
         n=len(s)
-        i=0
-        j=n-1
         mod=int(1e9+7)
-        dp=[[-1 for i in range(n)] for j in range(n)]
-        return hs(i,j,dp)
-
+        dp=[[0 for i in range(n)] for j in range(n)]
+        for i in range(n):
+            dp[i][i]=1
+        for i in range(1,n):
+            if(s[i-1]==s[i]):
+                dp[i-1][i]=1+dp[i-1][i-1]+dp[i][i]
+            else:
+                dp[i-1][i]=dp[i-1][i-1]+dp[i][i]
+        for i in range(2,n):
+            j=0
+            k=i
+            while(k<n):
+                if(s[k]==s[j]):
+                    dp[j][k]=1+dp[j+1][k]+dp[j][k-1]
+                else:
+                    dp[j][k]=dp[j+1][k]+dp[j][k-1]-dp[j+1][k-1]
+                j+=1
+                k+=1
+        return dp[0][-1]%mod
 #{ 
 #  Driver Code Starts
 #Initial template for Python 3
