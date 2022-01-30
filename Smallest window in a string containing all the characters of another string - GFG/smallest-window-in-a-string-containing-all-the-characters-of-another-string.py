@@ -28,9 +28,6 @@ class Solution:
             i+=1
         if(ans[0]==0 and ans[1]==n+2):
             return -1
-        if(i-j<ans[1]-ans[0]):
-            ans[0]=j
-            ans[1]=i
         return s[ans[0]:ans[1]]
 #{ 
 #  Driver Code Starts
