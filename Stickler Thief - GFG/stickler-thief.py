@@ -9,8 +9,6 @@ class Solution:
         if(n==2):
             return max(a[0],a[1])
         a[2]=a[2]+a[0]
-        if(n==3):
-            return max(a[1],a[2])
         for i in range(3,n):
             a[i]=max(a[i]+a[i-2],a[i]+a[i-3])
         return max(a[-1],a[-2])
