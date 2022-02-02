@@ -5,24 +5,23 @@
 class Solution:
     def fourSum(self, arr, m):
         # code here
-           li = set()
-           n = len(arr)
-           arr.sort()
-           for i in range(n-3):
-               for j in range(i+1, n-2):
-                   l = j + 1
-                   r = n - 1
-                   while(l < r):
-                       s = arr[i] + arr[j] + arr[l] + arr[r]
-                       if (s == k):
-                           li.add((arr[i], arr[j], arr[l], arr[r]))
-                           l += 1
-                           r -= 1
-                       elif (s < k):
-                           l += 1
-                       else :
-                           r -= 1
-           return sorted(li) 
+        arr.sort()
+        ans=set()
+        n=len(arr)
+        for i in range(n-3):
+            for j in range(i+1,n-2):
+                k=j+1
+                l=n-1
+                while(k<l):
+                    t=arr[i]+arr[j]+arr[k]+arr[l]
+                    if(t==m):
+                        ans.add((arr[i],arr[j],arr[k],arr[l]))
+                        l-=1
+                    elif(t<m):
+                        k+=1
+                    else:
+                        l-=1
+        return sorted(ans)
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
