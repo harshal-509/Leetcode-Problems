@@ -15,19 +15,19 @@ class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
         # Code here
-        def printf(head):
-            f=head
-            while(f!=None):
-                print(f.data,end=" ")
-                f=f.next
-        def hs(head):
-            if(head==None or head.next==None):
-                return head
-            res=hs(head.next)
-            head.next.next=head
-            head.next=None
-            return res
-        return hs(head)
+        if(head==None):
+            return None
+        if(head.next==None):
+            return head
+        next=None
+        curr=head
+        prev=None
+        while(curr!=None):
+            next=curr.next
+            curr.next=prev
+            prev=curr
+            curr=next
+        return prev
 #{ 
 #  Driver Code Starts
 # Node Class    
