@@ -6,19 +6,26 @@
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
-        x=head
-        y=head
-        print(y)
-        while(x!=None and y!=None and y.next!=None):
-            x=x.next
-            y=y.next.next
-            if(x==y):
-                break
-        if(x==None or y==None or y.next==None):
-            return
-        x=head
-        while(x!=None and y!=None):
-            if(x==y):
-                return x
-            x=x.next
-            y=y.next
+        def isloop(head):
+            slow=head
+            fast=head
+            while(fast!=None):
+                slow=slow.next
+                if(fast.next==None):
+                    break
+                fast=fast.next.next
+                if(slow==fast):
+                    return fast
+            return 0
+        def starting(head,fast):
+            slow=head
+            curr=head
+            while(slow!=fast):
+                slow=slow.next
+                fast=fast.next
+            return fast
+        fast=isloop(head)
+        if(fast==0):
+            return 
+        else:
+            return starting(head,fast)
