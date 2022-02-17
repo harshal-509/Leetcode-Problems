@@ -15,10 +15,6 @@ class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
         # Code here
-        if(head==None):
-            return None
-        if(head.next==None):
-            return head
         next=None
         curr=head
         prev=None
