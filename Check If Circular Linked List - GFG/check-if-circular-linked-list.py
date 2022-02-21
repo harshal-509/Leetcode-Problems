@@ -10,13 +10,11 @@ def isCircular(head):
     # Code here
     if(head==None):
         return 1
-    slow=head
-    fast=head.next
-    while(fast!=None and fast.next!=None):
-        if(slow==fast):
+    curr=head.next
+    while(curr!=None):
+        if(curr==head):
             return 1
-        slow=slow.next
-        fast=fast.next.next
+        curr=curr.next
     return 0
 #{ 
 #  Driver Code Starts
