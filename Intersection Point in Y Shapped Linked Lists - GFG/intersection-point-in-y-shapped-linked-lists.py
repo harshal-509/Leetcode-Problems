@@ -20,21 +20,31 @@
 #Function to find intersection point in Y shaped Linked Lists.
 def intersetPoint(head1,head2):
     #code here
-    def hs(head,h):
+    def count(head):
         temp=head
+        c=0
         while(temp!=None):
-            h[temp]=1
+            c+=1
             temp=temp.next
-    def ps(head,h):
+        return c
+    def gethead(head,d):
         temp=head
-        while(temp!=None):
-            if(h.get(temp,0)):
-                return temp
+        while(temp!=None and d):
             temp=temp.next
-        return Node(-1)
-    h={}
-    hs(head1,h)
-    return ps(head2,h).data
+            d-=1
+        return temp
+    c1=count(head1)
+    c2=count(head2)
+    if(c1<c2):
+        head2=gethead(head2,c2-c1)
+    elif(c2<c1):
+        head1=gethead(head1,c1-c2)
+    while(head1!=None and head2!=None):
+        if(head1==head2):
+            return head1.data
+        head1=head1.next
+        head2=head2.next
+    return -1
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
