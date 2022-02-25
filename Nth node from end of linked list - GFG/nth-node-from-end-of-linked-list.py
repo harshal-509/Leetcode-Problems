@@ -18,17 +18,15 @@
 def getNthFromLast(head,n):
     #code here
     temp=head
-    l=0
-    while(temp):
+    temp1=head
+    while(n):
+        if(temp1==None):
+            return -1
+        temp1=temp1.next
+        n-=1
+    while(temp1!=None):
+        temp1=temp1.next
         temp=temp.next
-        l+=1
-    c=l-n
-    temp=head
-    while(c and temp):
-        temp=temp.next
-        c-=1
-    if(temp==None):
-        return -1
     return temp.data
 #{ 
 #  Driver Code Starts
