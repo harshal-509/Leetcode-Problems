@@ -13,52 +13,35 @@
 class Solution:
     #Function to sort the given linked list using Merge Sort.
     def mergeSort(self, head):
-        def merge(left,right):
-            head=Node(-1)
-            temp=head
-            while(left!=None and right!=None):
-                if(left.data<=right.data):
-                    head.next=Node(left.data)
-                    head=head.next
-                    left=left.next
-                else:
-                    head.next=Node(right.data)
-                    head=head.next
-                    right=right.next
-            while(left!=None):
-                head.next=Node(left.data)
-                head=head.next
-                left=left.next
-            while(right!=None):
-                head.next=Node(right.data)
-                head=head.next
-                right=right.next
-            return temp.next
-        def getmid(head):
-            slow=head
-            fast=head.next
-            while(fast!=None and fast.next!=None):
-                slow=slow.next
-                fast=fast.next.next
-            return slow
-        def printf(head):
-            temp=head
-            while(temp!=None):
-                print(temp.data,end=" ")
-                temp=temp.next
-            print("")
-        def mergesort(head):
-            if(head==None or head.next==None):
+        def partition(head,tail):
+            if(head==None or head==tail or tail==head):
                 return head
-            mid=getmid(head)
-            left=head
-            right=mid.next
-            mid.next=None
-            left=mergesort(left)
-            right=mergesort(right)
-            left=merge(left,right)
-            return left
-        return mergesort(head)
+            pivot=tail
+            prev=head
+            curr=head
+            while(head!=tail):
+                if(head.data<=pivot.data):
+                    prev=curr
+                    temp=curr.data
+                    curr.data=head.data
+                    head.data=temp
+                    curr=curr.next
+                head=head.next
+            temp=curr.data   
+            curr.data=pivot.data
+            pivot.data=temp
+            return prev
+        def quicksort(head,tail):
+            if(head==None or head==tail or head==tail.next):
+                return head
+            pivot=partition(head,tail)
+            quicksort(head,pivot)
+            quicksort(pivot.next,tail)
+        tail=head
+        while(tail!=None and tail.next!=None):
+            tail=tail.next
+        quicksort(head,tail)
+        return head
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
