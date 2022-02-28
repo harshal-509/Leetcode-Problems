@@ -2,15 +2,13 @@
 
 class Solution:
 
-    def findMinDiff(self, A,N,M):
+    def findMinDiff(self, a,n,m):
 
         # code here
-        A.sort()
-        ans=int(1e9+1)
-        i=0
-        while(i+M-1<N):
-            ans=min(ans,A[i+M-1]-A[i])
-            i+=1
+        a.sort()
+        ans=a[-1]
+        for i in range(n-m+1):
+            ans=min(ans,a[i+m-1]-a[i])
         return ans
 #{ 
 #  Driver Code Starts
