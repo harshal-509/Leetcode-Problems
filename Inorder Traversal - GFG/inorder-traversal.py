@@ -1,6 +1,6 @@
 #User function Template for python3
 
-
+from collections import deque
 '''
 # Node Class:
 class Node:
@@ -12,16 +12,24 @@ class Node:
 
 #Function to return a list containing the inorder traversal of the tree. 
 class Solution:
-    def __init__(self):
-        self.ans=[]
     def InOrder(self,root):
         # code here
+        ans=[]
         if(root==None):
-            return
-        self.InOrder(root.left)
-        self.ans.append(root.data)
-        self.InOrder(root.right)
-        return self.ans
+            return ans
+        q=deque([root])
+        while(q):
+            x=q[-1]
+            while(x.left!=None):
+                q.append(x.left)
+                x=x.left
+            p=q.pop()
+            if(q):
+                q[-1].left=None
+            ans.append(p.data)
+            if(p.right!=None):
+                q.append(p.right)
+        return ans
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
