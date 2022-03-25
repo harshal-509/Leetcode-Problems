@@ -1,7 +1,7 @@
 #User function Template for python3
 
 
-
+from collections import deque
 '''
 # Node Class:
 class Node:
@@ -15,14 +15,22 @@ def preorder(root):
    
     # code here
     ans=[]
-    def preorder1(root):
-        if(root==None):
-            return 
-        ans.append(root.data)
-        preorder1(root.left)
-        preorder1(root.right)
+    if(root==None):
         return ans
-    preorder1(root)
+    q=deque([root])
+    ans=[root.data]
+    while(q):
+        x=q[-1]
+        while(x.left!=None):
+            q.append(x.left)
+            ans.append(x.left.data)
+            x=x.left
+        p=q.pop()
+        if(q):
+            q[-1].left=None
+        if(p.right!=None):
+            q.append(p.right)
+            ans.append(p.right.data)
     return ans
 #{ 
 #  Driver Code Starts
