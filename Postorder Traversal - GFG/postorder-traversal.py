@@ -1,6 +1,6 @@
 #User function Template for python3
 
-
+from collections import deque 
 '''
 # Node Class:
 class Node:
@@ -14,16 +14,23 @@ class Node:
 def postOrder(root):
     # code here
     ans=[]
-    def postOrder1(root):
-        if(root==None):
-            return 
-        postOrder1(root.left)
-        postOrder1(root.right)
-        ans.append(root.data)
+    if(root==None):
         return ans
-    postOrder1(root)
+    q=deque([root])
+    while(q):
+        x=q[-1]
+        if(x.left==None and x.right==None):
+            ans.append(x.data)
+            q.pop()
+        while(x.left!=None):
+            q.append(x.left)
+            x=x.left
+        if(q):
+            q[-1].left=None
+        if(x.right!=None):
+            q.append(x.right)
+            x.right=None
     return ans
-
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
