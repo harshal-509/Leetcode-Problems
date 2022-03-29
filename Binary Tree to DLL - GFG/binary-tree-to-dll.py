@@ -11,24 +11,24 @@ class Node:
 
 #Function to convert a binary tree to doubly linked list.
 class Solution:
+    def __init__(self):
+        self.head=None
+        self.tail=None
     def bToDLL(self,root):
         # do Code here
-        ans=[]
-        def inorder(root):
+        def solve(root):
             if(root==None):
                 return
-            inorder(root.left)
-            ans.append(root.data)
-            inorder(root.right)
-        inorder(root)
-        head=Node(ans[0])
-        temp=head
-        for i in range(1,len(ans)):
-            temp1=temp
-            temp.right=Node(ans[i])
-            temp=temp.right
-            temp.left=temp1
-        return head
+            solve(root.left)
+            if(self.head==None):
+                self.head=root
+            else:
+                self.prev.right=root
+                root.left=self.prev
+            self.prev=root
+            solve(root.right)
+        solve(root)
+        return self.head
 #{ 
 #  Driver Code Starts
 #Initial template for Python
