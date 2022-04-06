@@ -18,7 +18,6 @@ class Solution:
                 inorder(root.right)
         ans=[]
         inorder(root)
-        ans.sort()
         n=len(ans)
         return solve(0,n)
 #{ 
