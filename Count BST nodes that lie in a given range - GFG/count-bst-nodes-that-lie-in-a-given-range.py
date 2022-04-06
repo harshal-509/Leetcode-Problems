@@ -11,8 +11,13 @@ def getCount(root,low,high):
             return None
         if(root.data>=low and root.data<=high):
             ans+=1
-        solve(root.left,l,r)
-        solve(root.right,l,r)
+        if(root.data<low):
+            solve(root.right,l,r)
+        elif(root.data>high):
+            solve(root.left,l,r)
+        else:
+            solve(root.left,l,r)
+            solve(root.right,l,r)
     ans=0
     solve(root,low,high)
     return ans
