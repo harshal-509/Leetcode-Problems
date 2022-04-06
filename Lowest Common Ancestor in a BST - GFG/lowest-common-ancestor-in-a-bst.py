@@ -6,17 +6,11 @@ def LCA(root, n1, n2):
     #code here.
     if(root==None):
         return None
-    if(root.data==n1 or root.data==n2):
-        return root
-    left=LCA(root.left,n1,n2)
-    right=LCA(root.right,n1,n2)
-    if(left and right):
-        return root
-    if(left!=None and right==None):
-        return left
-    if(left==None and right!=None):
-        return right
-    return None
+    if(n1<root.data and n2<root.data):
+        return LCA(root.left,n1,n2)
+    if(n1>root.data and n2>root.data):
+        return LCA(root.right,n1,n2)
+    return root
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
