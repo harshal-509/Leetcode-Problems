@@ -3,19 +3,19 @@
 class Solution:
     def find_permutation(self, s):
         # Code here
-        n=len(s)
-        def hs(s,i,ans):
+        def solve(i):
             if(i==n):
                 ans.append("".join(s))
             for j in range(i,n):
                 s[i],s[j]=s[j],s[i]
-                hs(s,i+1,ans)
+                solve(i+1)
                 s[i],s[j]=s[j],s[i]
         ans=[]
+        temp=""
         s=list(s)
-        hs(s,0,ans)
-        ans.sort()
-        return ans
+        n=len(s)
+        solve(0)
+        return sorted(ans)
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
