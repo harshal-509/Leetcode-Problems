@@ -5,18 +5,22 @@ class Solution:
     #Function to find if there is a celebrity in the party or not.
     def celebrity(self, M, n):
         # code here
+        s=[i for i in range(n)]
+        while(len(s)>=2):
+            x=s.pop()
+            y=s.pop()
+            if(M[x][y]==1 and M[y][x]==0):
+                s.append(y)
+            elif(M[x][y]==0 and M[y][x]==1):
+                s.append(x)
+        if()
+        t=s[0]
         for i in range(n):
-            flag=0
-            for j in range(n):
-                if((i==j) or M[i][j]==0 and M[j][i]==1):
-                    pass
-                else:
-                    flag=1
-                    break
-            if(flag==0):
-                return i
-        return -1
-
+            if((t==i) or M[t][i]==0 and M[i][t]==1):
+                pass
+            else:
+                return -1
+        return t
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
