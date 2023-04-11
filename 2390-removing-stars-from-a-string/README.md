@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/removing-stars-from-a-string/">2390. Removing Stars From a String</a></h2><h3>Medium</h3><hr><div><p>You are given a string <code>s</code>, which contains stars <code>*</code>.</p>
+<h2><a href="https://leetcode.com/problems/removing-stars-from-a-string/">2390. Removing Stars From a String</a></h2><h3>Medium</h3><hr><div data-read-aloud-multi-block="true"><p>You are given a string <code>s</code>, which contains stars <code>*</code>.</p>
 
 <p>In one operation, you can:</p>
 
@@ -17,17 +17,17 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> s = "leet**cod*e"
 <strong>Output:</strong> "lecoe"
 <strong>Explanation:</strong> Performing the removals from left to right:
-- The closest character to the 1<sup>st</sup> star is 't' in "lee<strong><u>t</u></strong>**cod*e". s becomes "lee*cod*e".
-- The closest character to the 2<sup>nd</sup> star is 'e' in "le<strong><u>e</u></strong>*cod*e". s becomes "lecod*e".
-- The closest character to the 3<sup>rd</sup> star is 'd' in "leco<strong><u>d</u></strong>*e". s becomes "lecoe".
+- The closest character to the 1<sup style="">st</sup> star is 't' in "lee<strong><u>t</u></strong>**cod*e". s becomes "lee*cod*e".
+- The closest character to the 2<sup style="">nd</sup> star is 'e' in "le<strong><u>e</u></strong>*cod*e". s becomes "lecod*e".
+- The closest character to the 3<sup style="">rd</sup> star is 'd' in "leco<strong><u>d</u></strong>*e". s becomes "lecoe".
 There are no more stars, so we return "lecoe".</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> s = "erase*****"
 <strong>Output:</strong> ""
@@ -38,7 +38,7 @@ There are no more stars, so we return "lecoe".</pre>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= s.length &lt;= 10<sup style="">5</sup></code></li>
 	<li><code>s</code> consists of lowercase English letters and stars <code>*</code>.</li>
 	<li>The operation above can be performed on <code>s</code>.</li>
 </ul>
