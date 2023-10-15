@@ -1,14 +1,10 @@
 class Solution:
     def numWays(self, steps: int, arrLen: int) -> int:
         @cache
-        def solve(i,n,s):
-            if(s==steps and i==0):
-                return 1
-            if(i<0 or i>=n or s>=steps):
+        def solve(curr,remsteps):
+            if(curr<0 or curr>=arrLen or remsteps<0):
                 return 0
-            a=0
-            a+=solve(i+1,n,s+1)
-            a+=solve(i,n,s+1)
-            a+=solve(i-1,n,s+1)
-            return a
-        return solve(0,arrLen,0)%(int(1e9+7))
+            if(curr==0 and remsteps==0):
+                return 1
+            return solve(curr+1,remsteps-1)+solve(curr-1,remsteps-1)+solve(curr,remsteps-1)
+        return solve(0,steps)%int(1e9+7)
